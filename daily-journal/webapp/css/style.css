@@ -1,0 +1,216 @@
+.journalShell {
+    background: #f8d7d7;
+}
+
+.journalPage {
+    box-sizing: border-box;
+    width: calc(100% - 3rem);
+    max-width: 76rem;
+    margin: 0 auto;
+    padding: 1.5rem 0 4rem;
+}
+
+.topBar {
+    min-height: 3.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.brand {
+    gap: 0.75rem;
+}
+
+.brandIcon {
+    color: #6476d9;
+}
+
+.welcomeBlock {
+    padding: 3rem 0 1.75rem;
+}
+
+.eyebrow,
+.statLabel,
+.entryMeta,
+.sectionDescription {
+    color: #687386;
+}
+
+.eyebrow {
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.welcomeTitle {
+    margin-top: 0.45rem;
+    font-size: 2rem;
+}
+
+.welcomeSubtitle {
+    max-width: 40rem;
+    color: #687386;
+    font-size: 1rem;
+}
+
+.statsRow {
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.statCard {
+    box-sizing: border-box;
+    min-width: 12rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid #e8eaf0;
+    border-radius: 0.75rem;
+    background: #fff;
+}
+
+.statLabel {
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.statDate {
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.entriesSection {
+    padding: 1.5rem;
+    border: 1px solid #e8eaf0;
+    border-radius: 0.875rem;
+    background: #fff;
+}
+
+.sectionHeading {
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.sectionDescription {
+    margin-top: 0.25rem;
+}
+
+.filters {
+    gap: 0.75rem;
+}
+
+.entriesList {
+    background: transparent;
+}
+
+.entryRow {
+    gap: 1rem;
+    padding: 1.25rem 0.25rem;
+}
+
+.entryDate {
+    box-sizing: border-box;
+    min-width: 3.5rem;
+    padding: 0.5rem 0.25rem;
+    border-radius: 0.625rem;
+    background: #f1f2ff;
+    color: #5366cf;
+}
+
+.entryDay {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.entryMonth {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+.entryBody {
+    min-width: 0;
+}
+
+.entryTitleRow {
+    gap: 0.75rem;
+}
+
+.entryTitle {
+    margin: 0;
+}
+
+.moodStatus {
+    margin-top: 0.25rem;
+}
+
+.entryMeta {
+    margin: 0.25rem 0 0.5rem;
+    font-size: 0.8125rem;
+}
+
+.entryText {
+    color: #323b4b;
+    line-height: 1.55;
+    white-space: pre-line;
+}
+
+.entryActions {
+    gap: 0.125rem;
+}
+
+.emptyState {
+    gap: 0.75rem;
+    padding: 3.5rem 1rem;
+}
+
+.emptyIcon {
+    margin-bottom: 0.5rem;
+    color: #6476d9;
+}
+
+.emptyDescription {
+    max-width: 25rem;
+    margin-bottom: 0.5rem;
+    color: #687386;
+}
+
+@media (max-width: 700px) {
+    .journalPage {
+        width: calc(100% - 2rem);
+        padding-top: 1rem;
+    }
+
+    .welcomeBlock {
+        padding-top: 2rem;
+    }
+
+    .statsRow,
+    .filters {
+        width: 100%;
+    }
+
+    .statCard {
+        flex: 1 1 8rem;
+        min-width: 0;
+    }
+
+    .entriesSection {
+        padding: 1rem;
+    }
+
+    .filters > * {
+        flex: 1 1 100%;
+        width: 100% !important;
+    }
+
+    .entryRow {
+        flex-wrap: wrap;
+    }
+
+    .entryBody {
+        flex: 1 1 calc(100% - 5rem);
+    }
+
+    .entryActions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}

@@ -1,0 +1,132 @@
+<mvc:View
+    controllerName="com.dailyjournal.dailyjournal.controller.Journal"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Page id="page" showHeader="false" class="journalShell">
+        <content>
+            <VBox class="journalPage">
+                <HBox class="topBar" alignItems="Center" justifyContent="SpaceBetween">
+                    <HBox alignItems="Center" class="brand">
+                        <core:Icon
+                            src="sap-icon://book"
+                            size="1.25rem"
+                            class="brandIcon" />
+                        <Title text="{i18n>title}" level="H2" />
+                    </HBox>
+                    <Button
+                        text="{i18n>newEntry}"
+                        icon="sap-icon://add"
+                        type="Emphasized"
+                        press=".onNewEntry" />
+                </HBox>
+
+                <VBox class="welcomeBlock">
+                    <Text text="{journal>/todayLabel}" class="eyebrow" />
+                    <Title text="{i18n>welcomeTitle}" level="H1" class="welcomeTitle" />
+                    <Text text="{i18n>welcomeSubtitle}" class="welcomeSubtitle" />
+                </VBox>
+
+                <HBox class="statsRow" wrap="Wrap">
+                    <VBox class="statCard">
+                        <Text text="{i18n>entriesLabel}" class="statLabel" />
+                        <ObjectNumber number="{journal>/entryCount}" unit="{i18n>entriesUnit}" />
+                    </VBox>
+                    <VBox class="statCard">
+                        <Text text="{i18n>wordsLabel}" class="statLabel" />
+                        <ObjectNumber number="{journal>/wordCount}" unit="{i18n>wordsUnit}" />
+                    </VBox>
+                    <VBox class="statCard">
+                        <Text text="{i18n>todayLabel}" class="statLabel" />
+                        <Text text="{journal>/todayShortLabel}" class="statDate" />
+                    </VBox>
+                </HBox>
+
+                <VBox class="entriesSection">
+                    <HBox class="sectionHeading" alignItems="Center" justifyContent="SpaceBetween" wrap="Wrap">
+                        <VBox>
+                            <Title text="{i18n>entriesHeading}" level="H2" />
+                            <Text text="{i18n>entriesDescription}" class="sectionDescription" />
+                        </VBox>
+                        <HBox class="filters" alignItems="Center" wrap="Wrap">
+                            <SearchField
+                                width="17rem"
+                                placeholder="{i18n>searchPlaceholder}"
+                                liveChange=".onSearch" />
+                            <Select
+                                width="10rem"
+                                selectedKey="{journal>/moodFilter}"
+                                change=".onMoodFilterChange"
+                                tooltip="{i18n>filterByMood}">
+                                <items>
+                                    <core:Item key="all" text="{i18n>allMoods}" />
+                                    <core:Item key="great" text="{i18n>moodGreat}" />
+                                    <core:Item key="good" text="{i18n>moodGood}" />
+                                    <core:Item key="okay" text="{i18n>moodOkay}" />
+                                    <core:Item key="low" text="{i18n>moodLow}" />
+                                    <core:Item key="tough" text="{i18n>moodTough}" />
+                                </items>
+                            </Select>
+                        </HBox>
+                    </HBox>
+
+                    <List
+                        id="entriesList"
+                        items="{journal>/filteredEntries}"
+                        showSeparators="Inner"
+                        class="entriesList">
+                        <items>
+                            <CustomListItem>
+                                <HBox class="entryRow" alignItems="Start">
+                                    <VBox class="entryDate" alignItems="Center">
+                                        <Text text="{journal>dayNumber}" class="entryDay" />
+                                        <Text text="{journal>monthLabel}" class="entryMonth" />
+                                    </VBox>
+                                    <VBox class="entryBody" width="100%">
+                                        <HBox class="entryTitleRow" alignItems="Center" wrap="Wrap">
+                                            <Title text="{journal>title}" level="H3" class="entryTitle" />
+                                            <ObjectStatus
+                                                text="{journal>moodLabel}"
+                                                state="{journal>moodState}"
+                                                icon="{journal>moodIcon}"
+                                                class="moodStatus" />
+                                        </HBox>
+                                        <Text text="{journal>displayDate}" class="entryMeta" />
+                                        <Text text="{journal>text}" wrapping="true" maxLines="4" class="entryText" />
+                                    </VBox>
+                                    <HBox class="entryActions">
+                                        <Button
+                                            icon="sap-icon://edit"
+                                            type="Transparent"
+                                            tooltip="{i18n>editEntry}"
+                                            press=".onEditEntry" />
+                                        <Button
+                                            icon="sap-icon://delete"
+                                            type="Transparent"
+                                            tooltip="{i18n>deleteEntry}"
+                                            press=".onDeleteEntry" />
+                                    </HBox>
+                                </HBox>
+                            </CustomListItem>
+                        </items>
+                    </List>
+
+                    <VBox
+                        visible="{= ${journal>/filteredEntries}.length === 0 }"
+                        alignItems="Center"
+                        class="emptyState">
+                        <core:Icon src="sap-icon://notes" size="2rem" class="emptyIcon" />
+                        <Title text="{i18n>emptyTitle}" level="H3" />
+                        <Text text="{i18n>emptyDescription}" textAlign="Center" class="emptyDescription" />
+                        <Button
+                            text="{i18n>writeFirstEntry}"
+                            icon="sap-icon://add"
+                            type="Emphasized"
+                            press=".onNewEntry" />
+                    </VBox>
+                </VBox>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>
