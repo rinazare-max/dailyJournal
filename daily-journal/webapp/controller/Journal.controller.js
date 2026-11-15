@@ -138,6 +138,7 @@ sap.ui.define([
                 this._oDatePicker = new DatePicker(this.createId("entryDatePicker"), {
                     displayFormat: "long",
                     valueFormat: "yyyy-MM-dd",
+                    maxDate: new Date(),
                     width: "100%"
                 });
                 this._oMoodSelect = new Select(this.createId("entryMoodSelect"), {
@@ -185,6 +186,7 @@ sap.ui.define([
             }
 
             this._oEntryDialog.setTitle(oEntry ? oBundle.getText("editEntry") : oBundle.getText("newEntry"));
+            this._oDatePicker.setMaxDate(new Date());
             this._oTitleInput.setValue(oEntry ? oEntry.title : "");
             this._oDatePicker.setValue(oEntry ? oEntry.date : toIsoDate(new Date()));
             this._oMoodSelect.setSelectedKey(oEntry ? oEntry.mood : "good");
